@@ -5,10 +5,10 @@ from scrapy.http import Request
 from jobboard.items import JobItem, JobUrltem
 
 class StackoverflowSpider(CrawlSpider):
-    name = 'stackoverflow'
+    name = 'stackoverflowjob'
     allowed_domains = ['careers.stackoverflow.com']
     start_urls = ['http://www.careers.stackoverflow.com/jobs?pg=%d' % page
-                   for page in xrange(74) ]
+                   for page in xrange(1,74) ]
 
     rules = (
         Rule(SgmlLinkExtractor(allow=r'jobs/'), callback='parse_item', follow=True),
@@ -33,14 +33,14 @@ class StackoverflowSpider(CrawlSpider):
         job_detail = selector.xpath("//div[@class='jobdetail']")
 
         job_item = JobItem()
-        job_item['about']          =  job_detail.xpath("div[@class='description'][3]").extract()
-        job_item['desc']           =  job_detail.xpath("div[@class='description'][1]").extract()
-        job_item['employer']       =  job_detail.xpath("div[@id='hed']/h1/a/@href").extract()
-        job_item['employer_link']  =  job_detail.xpath("div[@id='hed']/a[@class='employer']/@href").extract()
-        job_item['joeltest']       =  job_detail.xpath("ul[@id='joeltest']/li[@class='checked']").extract()
-        job_item['location']       =  job_detail.xpath("div[@id='hed']/span[@class='location']/text()").extract()[0].strip("\r\n").strip()
-        job_item['skills']         =  job_detail.xpath("div[@class='description'][2]").extract()
-        job_item['tags']           =  job_detail.xpath("div[@id='hed']/p[@id='tags']/a[@class='post-tag job-link']/text()").extract()
-        job_item['title']          =  job_detail.xpath("div[@id='hed']/h1/a/text()").extract()
+        job_item['about']          = job_detail.xpath("div[@class='description'][3]").extract()
+        job_item['desc']           = job_detail.xpath("div[@class='description'][1]").extract()
+        job_item['employer']       = job_detail.xpath("div[@id='hed']/h1/a/@href").extract()
+        job_item['employer_link']  = job_detail.xpath("div[@id='hed']/a[@class='employer']/@href").extract()
+        job_item['joeltest']       = job_detail.xpath("ul[@id='joeltest']/li[@class='checked']").extract()
+        job_item['location']       = job_detail.xpath("div[@id='hed']/span[@class='location']/text()").extract()[0].strip("\r\n").strip()
+        job_item['skills']         = job_detail.xpath("div[@class='description'][2]").extract()
+        job_item['tags']           = job_detail.xpath("div[@id='hed']/p[@id='tags']/a[@class='post-tag job-link']/text()").extract()
+        job_item['title']          = job_detail.xpath("div[@id='hed']/h1/a/text()").extract()
 
         return job_item

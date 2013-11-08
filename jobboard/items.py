@@ -19,3 +19,21 @@ class JobItem(Item):
     skills        = Field()
     tags          = Field()
     title         = Field()
+
+class CompanyUrlItem(Item):
+    title    = Field()
+    link     = Field()
+    location = Field()
+
+class CompanyItem(Item):
+    ad_img          = Field()
+    benefits        = Field()
+    # @TODO currently not used
+    founded_year    = Field()
+    logo            = Field()
+    name            = Field()
+    statements      = Field()
+    status          = Field()
+    tag_line        = Field()
+    tech_stack      = Field()
+    tech_stack_tags = Field()
