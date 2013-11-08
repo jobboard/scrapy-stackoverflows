@@ -11,5 +11,11 @@ BOT_NAME = 'jobboard'
 SPIDER_MODULES = ['jobboard.spiders']
 NEWSPIDER_MODULE = 'jobboard.spiders'
 
+# Let's be less aggressive (2 sec)
+DOWNLOAD_DELAY = 2
+
+# bumped from default 180
+DOWNLOAD_TIMEOUT = 360
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'jobboard (+http://www.yourdomain.com)'
