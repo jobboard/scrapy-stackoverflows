@@ -25,11 +25,13 @@ ITEM_PIPELINES = {
     'jobboard.pipelines.JobCompanyPipeline':200,
 }
 
+LOG_FILE = 'jobs.log'
+
 # DB credentials
 MYSQL_HOST = 'localhost'
 MYSQL_DBNAME = 'jobs'
-MYSQL_USER = 'root'
-MYSQL_PASSWD = 'weblamp442'
+MYSQL_USER = ''
+MYSQL_PASSWD = ''
 
 # Specify the host and port to use when connecting to Redis (optional).
 REDIS_HOST = 'localhost'
