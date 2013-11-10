@@ -37,3 +37,4 @@ class CompanyItem(Item):
     tag_line        = Field()
     tech_stack      = Field()
     tech_stack_tags = Field()
+    addresses       = Field()

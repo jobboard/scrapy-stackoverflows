@@ -27,5 +27,5 @@ ITEM_PIPELINES = {
 # DB credentials
 MYSQL_HOST = 'localhost'
 MYSQL_DBNAME = 'jobs'
-MYSQL_USER = ''
-MYSQL_PASSWD = ''
+MYSQL_USER = 'root'
+MYSQL_PASSWD = 'weblamp442'

@@ -8,5 +8,6 @@ CREATE TABLE `company` (
     `statements` varchar(4500) DEFAULT NULL,
     `tech_stack` varchar(2500) DEFAULT NULL,
     `tech_stack_tags` varchar(200) DEFAULT NULL,
-    `benefits` varchar(400) DEFAULT NULL
+    `benefits` varchar(400) DEFAULT NULL,
+    `addresses` varchar(200) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

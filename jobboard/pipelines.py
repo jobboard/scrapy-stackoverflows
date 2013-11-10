@@ -40,15 +40,15 @@ class JobCompanyPipeline(object):
         if ret:
             conn.execute("""
                     UPDATE company SET ad_img = %s, logo = %s, name = %s, tag_line = %s, status = %s, statements = %s,
-                           tech_stack = %s, tech_stack_tags = %s, benefits = %s WHERE guid = %s
+                           tech_stack = %s, tech_stack_tags = %s, benefits = %s, addresses = %s WHERE guid = %s
                 """, (item['ad_img'][0], item['logo'][0], item['name'][0], item['tag_line'][0], item['status'][0], '\n'.join(item['statements']),
-                      '\n'.join(item['tech_stack']), '\n'.join(item['tech_stack_tags']), '\n'.join(item['benefits']), guid))
+                      '\n'.join(item['tech_stack']), '\n'.join(item['tech_stack_tags']), '\n'.join(item['benefits']), '\n'.join(item['addresses']), guid))
         else:
             conn.execute("""
-                    INSERT INTO company (guid, ad_img, logo, name, tag_line, status, statements, tech_stack, tech_stack_tags, benefits)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    INSERT INTO company (guid, ad_img, logo, name, tag_line, status, statements, tech_stack, tech_stack_tags, benefits, addresses)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (guid, item['ad_img'][0], item['logo'][0], item['name'][0], item['tag_line'][0], item['status'][0], '\n'.join(item['statements']),
-                      '\n'.join(item['tech_stack']), '\n'.join(item['tech_stack_tags']), '\n'.join(item['benefits'])))
+                      '\n'.join(item['tech_stack']), '\n'.join(item['tech_stack_tags']), '\n'.join(item['benefits']), '\n'.join(item['addresses'])))
 
     def _handle_error(self, failure, item, spider):
         """Handle occurred on db interaction."""

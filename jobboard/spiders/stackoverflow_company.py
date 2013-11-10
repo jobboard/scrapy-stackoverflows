@@ -8,7 +8,7 @@ class StackoverflowSpider(CrawlSpider):
     name = 'stackoverflowcompany'
     allowed_domains = ['careers.stackoverflow.com']
     start_urls = ['http://www.careers.stackoverflow.com/jobs/companies?pg=%d' % page
-                   for page in xrange(1,158) ]
+                   for page in xrange(1,2) ]
 
     rules = (
         #Rule(SgmlLinkExtractor(allow=r'jobs/'), callback='parse_item', follow=True),
@@ -46,6 +46,7 @@ class StackoverflowSpider(CrawlSpider):
         company_item['tech_stack']       = company_details.xpath('div[@data-company-section="tech-stack"]/*[not(self::div[@class="tags"])]').extract()
         company_item['tech_stack_tags']  = company_details.xpath('div[@data-company-section="tech-stack"]/div[@class="tags"]/span/text()').extract()
         company_item['benefits']         = company_details.xpath('div[@data-company-section="benefits"]/div[@class="benefits-list"]/span/@title').extract()
+        company_item['addresses']         = company_details.xpath('div[@data-company-section="locations"]/div[@class="addresses"]/div/text()').extract()
 
 
         return company_item
