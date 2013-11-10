@@ -25,7 +25,7 @@ ITEM_PIPELINES = {
     'jobboard.pipelines.JobCompanyPipeline':200,
 }
 
-LOG_FILE = 'jobs.log'
+LOG_FILE = 'stackoverflow.log'
 
 # DB credentials
 MYSQL_HOST = 'localhost'
