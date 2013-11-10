@@ -2,9 +2,10 @@ from scrapy.selector import Selector
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.http import Request
+from scrapy_redis.spiders import RedisSpider
 from jobboard.items import JobItem, JobUrltem, CompanyUrlItem, CompanyItem
 
-class StackoverflowSpider(CrawlSpider):
+class StackoverflowSpider(RedisSpider):
     name = 'stackoverflowcompany'
     allowed_domains = ['careers.stackoverflow.com']
     start_urls = ['http://www.careers.stackoverflow.com/jobs/companies?pg=%d' % page

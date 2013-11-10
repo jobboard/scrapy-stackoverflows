@@ -1,3 +1,5 @@
+USE jobs;
+
 CREATE TABLE `company` (
     `guid` char(32) PRIMARY KEY,
     `ad_img` varchar(500) DEFAULT NULL,

@@ -21,6 +21,7 @@ DOWNLOAD_TIMEOUT = 360
 #USER_AGENT = 'jobboard (+http://www.yourdomain.com)'
 
 ITEM_PIPELINES = {
+    'scrapy_redis.pipelines.RedisPipeline':300,
     'jobboard.pipelines.JobCompanyPipeline':300,
 }
 
@@ -29,3 +30,7 @@ MYSQL_HOST = 'localhost'
 MYSQL_DBNAME = 'jobs'
 MYSQL_USER = 'root'
 MYSQL_PASSWD = 'weblamp442'
+
+# Specify the host and port to use when connecting to Redis (optional).
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
