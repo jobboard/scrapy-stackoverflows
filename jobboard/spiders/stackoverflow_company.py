@@ -9,7 +9,7 @@ class StackoverflowSpider(RedisSpider):
     name = 'stackoverflowcompany'
     allowed_domains = ['careers.stackoverflow.com']
     start_urls = ['http://www.careers.stackoverflow.com/jobs/companies?pg=%d' % page
-                   for page in xrange(1,2) ]
+                   for page in xrange(1,159) ]
 
     rules = (
         #Rule(SgmlLinkExtractor(allow=r'jobs/'), callback='parse_item', follow=True),

@@ -21,8 +21,8 @@ DOWNLOAD_TIMEOUT = 360
 #USER_AGENT = 'jobboard (+http://www.yourdomain.com)'
 
 ITEM_PIPELINES = {
-    'scrapy_redis.pipelines.RedisPipeline':300,
-    'jobboard.pipelines.JobCompanyPipeline':300,
+    'scrapy_redis.pipelines.RedisPipeline':100,
+    'jobboard.pipelines.JobCompanyPipeline':200,
 }
 
 # DB credentials
