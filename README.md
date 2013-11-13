@@ -2,7 +2,7 @@
 
 Quick n Dirty implementation with scrappy to scrap all jobs and companies on http://careers.stackoverflow.com/jobs
 
-$# Dependencies
+## Dependencies
 - scrappy (https://github.com/scrapy/scrapy)
 - scrappy-redis (https://github.com/darkrho/scrapy-redis/)
 - MySQL-Python
