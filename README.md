@@ -60,6 +60,8 @@ analyzer.py:33: UnicodeWarning: Unicode equal comparison failed to convert both 
   (u'programming', 115), (u'based', 114), (u'as', 113), (u'infrastructure', 113), (u'excellent', 112),
   (u'information', 111), (u'need', 111), (u'app', 110), (u'computer', 109), (u'android', 108)]
 ```
+![word frequency](freq_plot.png)
+
 Or analyze a specific company
 ```
 jayzeng@Jays-iMac:~/Projects/jobboard (*)
