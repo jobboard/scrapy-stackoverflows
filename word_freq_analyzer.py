@@ -1,11 +1,12 @@
-import urllib
 import json
 import nltk
+import sys
+import urllib
 
 """
 Quick implementation to analyze word frequency in job posts
 """
-def main():
+def main(Company = None):
     # 1. download all positions
     # 2. jsonify
     # 3. loop through all pages
@@ -14,9 +15,15 @@ def main():
     descriptions = []
     for page in xrange(7):
         text = json.loads(urllib.urlopen('http://jobs.github.com/positions.json?page=%d' % page).read())
+
         # only interested in descriptions
         # filter out html tags
-        descriptions.extend(nltk.clean_html(post['description']) for post in text)
+
+        # only interested in one company?
+        if Company:
+            descriptions.extend(nltk.clean_html(post['description']) for post in text if post['company'].lower() == Company)
+        else:
+            descriptions.extend(nltk.clean_html(post['description']) for post in text)
 
     # tokenizations
     desc_tokens = (nltk.word_tokenize(desc) for desc in descriptions)
@@ -53,4 +60,7 @@ def get_top_tokens(fdist, count = 50):
     return top_tokens
 
 if __name__ == '__main__':
-    print main()
+    company = None
+    if len(sys.argv) > 1:
+        company = sys.argv[1]
+    print main(Company = company)
