@@ -1,12 +1,15 @@
-# Stackoverflow Career (Job & Companies) scrapper
+## Stackoverflow Career (Job & Companies) scrapper
 
 Quick n Dirty implementation with scrappy to scrap all jobs and companies on http://careers.stackoverflow.com/jobs
 
-# Dependencies
+$# Dependencies
 - scrappy (https://github.com/scrapy/scrapy)
 - scrappy-redis (https://github.com/darkrho/scrapy-redis/)
+- MySQL-Python
+- redis-cli & redis-server
+- MySql-server
 
-# How to run
+## How to run
 ```bash
 ➜  scrapy-stackoverflows git:(master) ✗ scrapy list
 stackoverflowjob
@@ -29,11 +32,11 @@ redis 127.0.0.1:6379> LRANGE 'stackoverflowcompany:items' 0 11
 
 You can also deploy scrapy as a daemon, see #http://scrapyd.readthedocs.org/en/latest/
 
-# Sample output
+## Sample output
 https://github.com/jayzeng/scrapy-stackoverflows/blob/master/jobs.json
 
-# word frequency analyzer
-# Simple implementation to analyze all positions on GitHub (https://jobs.github.com/positions)
+## word frequency analyzer
+## Simple implementation to analyze all positions on GitHub (https://jobs.github.com/positions)
 ```
 jayzeng@Jays-iMac:~/Projects/jobboard (*)
 > python word_freq_analyzer.py                                                                                                                                                                                      master [f8d9fc0] modified untracked
@@ -59,7 +62,7 @@ analyzer.py:33: UnicodeWarning: Unicode equal comparison failed to convert both 
   (u'information', 111), (u'need', 111), (u'app', 110), (u'computer', 109), (u'android', 108)]
 ```
 
-# TODO
+## TODO
 - Backoff and retry base upon (e.g: http status code)
 - A thin web interface to manipulate jobs (schedule, cancel jobs etc)
 - Add more spiders and crawlers to cover other job boards
