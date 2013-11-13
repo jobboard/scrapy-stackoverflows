@@ -36,11 +36,15 @@ def main(Company = None):
     # all get stop words
     stop_words = nltk.corpus.stopwords.words()
 
-    # plus some known useless words
-    stop_words.extend(['we', 'a', 're', 'you', 'the', 'us', '.', '..', '...'])
-
     # only keep ascii
     tokens = [token.lower() for token in all_tokens if token not in stop_words and token.lower().isalpha()]
+
+    # plus some known useless words + punctuations
+    punctuations = (',', '.', '*', '!', ':', '>', '<')
+    punctuations = [p*i for p in punctuations for i in xrange(5)]
+    common_words = ['we', 'a', 're', 'you', 'the', 'us', 'if', 'or', 'as', 'well', 'our', 'amp']
+    common_words.extend(punctuations)
+    tokens = [token.lower() for token in tokens if token not in common_words]
 
     # count frequency
     fdist = nltk.FreqDist(tokens)
@@ -48,17 +52,17 @@ def main(Company = None):
     show_word_count = 100
 
     fdist.plot(show_word_count)
-    get_top_tokens(fdist, show_word_count)
+    return get_top_tokens(fdist, show_word_count)
 
 def get_top_tokens(fdist, count = 50):
     # keep top 50
     top_tokens = []
     counter = 0
 
-    for key,val in fdist.items():
+    for key, val in fdist.items():
         if val > 1 and counter < count:
             top_tokens.append((key, val))
-            counter +=1
+            counter += 1
 
     return top_tokens
 
