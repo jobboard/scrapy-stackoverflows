@@ -45,7 +45,10 @@ def main(Company = None):
     # count frequency
     fdist = nltk.FreqDist(tokens)
 
-    return get_top_tokens(fdist, 100)
+    show_word_count = 100
+
+    fdist.plot(show_word_count)
+    get_top_tokens(fdist, show_word_count)
 
 def get_top_tokens(fdist, count = 50):
     # keep top 50
