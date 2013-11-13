@@ -42,7 +42,7 @@ def main(Company = None):
     # plus some known useless words + punctuations
     punctuations = (',', '.', '*', '!', ':', '>', '<')
     punctuations = [p*i for p in punctuations for i in xrange(5)]
-    common_words = ['we', 'a', 're', 'you', 'the', 'us', 'if', 'or', 'as', 'well', 'our', 'amp']
+    common_words = ['we', 'a', 're', 'you', 'the', 'us', 'if', 'or', 'as', 'well', 'our', 'amp', 'll', 'this', 'about', 'http', 'https', 'quot']
     common_words.extend(punctuations)
     tokens = [token.lower() for token in tokens if token not in common_words]
 
@@ -55,10 +55,14 @@ def main(Company = None):
     return get_top_tokens(fdist, show_word_count)
 
 def get_top_tokens(fdist, count = 50):
-    # keep top 50
+    """
+        @fdist nltk.FreqDist
+        @count number of top tokens (base on frequency, default to 50
+    """
     top_tokens = []
     counter = 0
 
+    # fdist.items() returns a sorted list
     for key, val in fdist.items():
         if val > 1 and counter < count:
             top_tokens.append((key, val))
